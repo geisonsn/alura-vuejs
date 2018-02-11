@@ -1,6 +1,6 @@
 <template>
 <div class="corpo">
-  <h1 class="centralizado">{{titulo}}</h1>
+  <h1 class="centralizado">Alurapic</h1>
 
   <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtre por parte do título">
   
@@ -8,6 +8,7 @@
     <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
       <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
+          <meu-botao rotulo="remover" tipo="button" @click.native="remove(foto)"/>
       </meu-painel>
     </li>
   </ul>
@@ -18,14 +19,23 @@
 <script>
 import Painel from '../shared/painel/Painel.vue';
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue';
+import Botao from '../shared/botao/Botao.vue';
+
 export default {
   components: {
     'meu-painel': Painel,
-    'imagem-responsiva': ImagemResponsiva
+    'imagem-responsiva': ImagemResponsiva,
+    'meu-botao': Botao
+  },
+  methods: {
+    remove(foto) {
+      if (confirm('Confirma?')) {
+        alert('Remover foto ' + foto.titulo);
+      }
+    }
   },
   data() {
     return {
-      titulo: "Alurapic",
       fotos: [],
       filtro: ''
     };
@@ -51,11 +61,6 @@ export default {
 <style>
 .centralizado {
   text-align: center;
-}
-.corpo {
-  font-family: Helvetica, sans-serif;
-  margin: 0 auto;
-  width: 96%;
 }
 .lista-fotos {
   list-style: none;
