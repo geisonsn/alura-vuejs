@@ -4,7 +4,8 @@ Vue.directive('meu-transform', {
   bind(el, binding, vnode) {
     let current = 0;
     el.addEventListener('dblclick', function() {
-      current+=90;
+      let incremento = binding.value || 90;
+      current+=incremento;
       this.style.transform = `rotate(${current}deg)`;
     });
   }
