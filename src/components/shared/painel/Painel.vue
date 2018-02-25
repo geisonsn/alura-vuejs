@@ -42,8 +42,12 @@ export default {
 }
 /* colocando todos os elementos do painel com box shadow */
 .panel * {
-    box-shadow: 5px 5px 5px;
-  }
+  box-shadow: 5px 5px 5px;
+}
+
+.painel-conteudo {
+  overflow: hidden;
+}
 
 .painel-fade-enter, .painel-fade-leave-active {
   opacity: 0
