@@ -1,13 +1,13 @@
 <template>
 <div class="corpo">
-  <h1 class="centralizado">Alurapic</h1>
+  <h1 class="centralizado" v-meu-transform.animate>Alurapic</h1>
 
   <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtre por parte do título">
   
   <ul class="lista-fotos">
     <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
       <meu-painel :titulo="foto.titulo">
-          <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform="{incremento: 15, animate: true}"/>
+          <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform.reverse.animate="15"/>
           <meu-botao 
             rotulo="remover" 
             tipo="button" 
